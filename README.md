@@ -17,3 +17,11 @@ First, data used to evaluate models is addressed. Data pre-processing including 
 As mentioned above, tagging data is necessary for document classification. Document tagging is time consuming process depending on size of documents required for model training as well as number of categories which documents are assigned to. There are variety of free resources available online. In this repository BBC News data is used to train and evaluate classification models. The dataset consists of 5 categories including business, entertainment, politics, sport, and technology. Total of 2225 documents from the BBC news website are provided and can be downloaded [here]( http://mlg.ucd.ie/datasets/bbc.html).
 <a name="fe"></a>
 ## Feature Extraction
+Feature extraction for document classification requires pre-processing. First of all, data is inspected briefly to check basic statistics and it can be expanded by using visualization tools as well as statistical tests. 
+```python
+print(data['label'].describe())
+count      2225
+unique        5
+top       sport
+freq        511
+```
