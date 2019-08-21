@@ -118,7 +118,7 @@ politics                  1.00      0.98      0.99        42
 sport                     0.94      1.00      0.97        51
 tech                      0.97      0.95      0.96        40
 
-  avg / total            0.98      0.98      0.98       223
+  avg / total             0.98      0.98      0.98       223
 ```
 -	Random Forest (no hyper-parameter tuned)
 ```python
