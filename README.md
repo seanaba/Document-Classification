@@ -110,6 +110,7 @@ pipeline_pca_lr = Pipeline([('pca', PCA(n_components=1000)),
 Several evaluation metrics can be used to evaluate and select the classification models such as precision, recall, F1-score, accuracy, ROC curve, AUC, and Mathew correlation coefficients.
 The results provided in the following demonstrate that simple model such as Logistic Regression performs better than Random Forest which is more complicated. Simple hyper-parameter tuning is applied and as a result, the final results are improved. 
 -	Logistic Regression (no hyper-parameter tuned)
+```python
                        precision    recall  f1-score   support
 business                  1.00      0.98      0.99        51
 entertainment             1.00      1.00      1.00        39
@@ -118,8 +119,9 @@ sport                     0.94      1.00      0.97        51
 tech                      0.97      0.95      0.96        40
 
   avg / total            0.98      0.98      0.98       223
-
+```
 -	Random Forest (no hyper-parameter tuned)
+```python
                       precision    recall  f1-score   support
 business                  0.92      0.94      0.93        51
 entertainment             0.90      0.95      0.92        39
@@ -128,8 +130,10 @@ sport                     0.89      0.98      0.93        51
 tech                      0.94      0.75      0.83        40
 
   avg / total             0.91      0.91      0.91       223
+```
 
 -Best Selected Model (hyper-parameters tuned)
+```python
                       precision    recall  f1-score   support
 business                  1.00      0.98      0.99        51
 entertainment             0.97      1.00      0.99        39
@@ -138,6 +142,7 @@ sport                     0.98      1.00      0.99        51
  tech                     0.98      1.00      0.99        40
 
   avg / total             0.99      0.99      0.99       223
+```
 
 
 
