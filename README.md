@@ -25,9 +25,26 @@ unique        5
 top       sport
 freq        511
 ```
-Since we are dealing with texts, text pre-processing such as removing stop words, spelling correction, stemming, and lemmatization can improve final results. For example, NLTK library provides many pre-processing tools. Other libraries such as Gensim and Spacy are useful for pre-processing.
+Since we are dealing with texts, text pre-processing such as removing stop words, spelling correction, stemming, and lemmatization can improve final results. For example, NLTK library provides many pre-processing tools. Other libraries such as Gensim and Spacy are useful for text pre-processing.
 ```python
 from nltk.corpus import stopwords
 stop_words = set(stopwords.words("english"))
 ```
+The next step is to convert text/word to array of numbers to feed classification models. Depending on classification models to be used for training classification model as well as data characteristics the following conversion methods for text/word can be used in the pre-processing. Term Frequency – Inverse Document Frequency (TF-IDF) is used to convert text to array in this repository.
+-	One-hot vector
+-	Term Frequency
+-	Term Frequency – Inverse Document Frequency 
+-	Global Vectors for Word Representation
+-	Word2vec
+-	FastText
+-	Contextualized Word Representations
+```python
+from sklearn.feature_extraction.text import TfidfVectorizer
+tfidf = TfidfVectorizer(lowercase=True, analyzer='word', min_df=0.001,
+                            max_df=0.3, ngram_range=(1, 3), norm='l2',
+                            use_idf=True, stop_words=stop_words)
+    tfidf_tr = tfidf.fit_transform(x_train)
+    tfidf_te = tfidf.transform(x_test)
+```
+
 
