@@ -60,5 +60,9 @@ pca = PCA(n_features)
 x_train = pca.fit_transform(x_train.toarray())
 x_test = pca.transform(x_test.toarray())
 ```
+The data pre-processing is not done here. Visualization of data and statistical test such chi-squared test to find the correlation/auto-correlation of data are other available tools to improve features and final results.
+<a name="cm"></a>
+## Document Classification Methods
+
 
 
