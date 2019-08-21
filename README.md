@@ -25,3 +25,9 @@ unique        5
 top       sport
 freq        511
 ```
+Since we are dealing with texts, text pre-processing such as removing stop words, spelling correction, stemming, and lemmatization can improve final results. For example, NLTK library provides many pre-processing tools. Other libraries such as Gensim and Spacy are useful for pre-processing.
+```python
+from nltk.corpus import stopwords
+stop_words = set(stopwords.words("english"))
+```
+
