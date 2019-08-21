@@ -43,8 +43,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 tfidf = TfidfVectorizer(lowercase=True, analyzer='word', min_df=0.001,
                             max_df=0.3, ngram_range=(1, 3), norm='l2',
                             use_idf=True, stop_words=stop_words)
-    tfidf_tr = tfidf.fit_transform(x_train)
-    tfidf_te = tfidf.transform(x_test)
+tfidf_tr = tfidf.fit_transform(x_train)
+tfidf_te = tfidf.transform(x_test)
 ```
 
 
