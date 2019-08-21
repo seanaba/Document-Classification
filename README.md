@@ -63,6 +63,49 @@ x_test = pca.transform(x_test.toarray())
 The data pre-processing is not done here. Visualization of data and statistical test such chi-squared test to find the correlation/auto-correlation of data are other available tools to improve features and final results.
 <a name="cm"></a>
 ## Document Classification Methods
+Now, it is time to feed the processed features to classification models. There is no good model in the whole universe as it totally depends on the nature of data. We are talking about document classification, so supervised learning models should be utilized to be trained and evaluated. The classification models can be as simple as Logistic Regression to much more complicated models such as bagging, boosting, neural networks, and deep learning. A few classification methods are provided below.
+-	Logistic Regression
+-	K-Nearest Neighbor
+-	Support Vector Machine
+-	Naive Bayes
+-	Decision Tree
+-	Ensemble methods such as Bagging, Boosting, and Cascading methods
+-	Deep learning methods such as RNN (GRU, LSTM), CNN, Attention networks, and RCNN.
+Many techniques are available for hyper-parameter tuning and model selection. For example, grid search cross validation and random search cross validation can be used for hyper-parameter tuning. 
+This repository is only used to demonstrate basic document classification. Two models (Logistic Regression and Random Forest) are used to be trained to classify documents and the grid search cross validation is used for hyper-parameter tuning. The final results and evaluation metrics are provided in the next section.
+```python
+pipeline_pca_lr = Pipeline([('pca', PCA(n_components=1000)),
+                              ('clf', LogisticRegression(random_state=47))])
+    lr_params = [{'clf__penalty': ['l2'], 'clf__C': [1, 10]}]
+    lr = GridSearchCV(estimator=pipeline_pca_lr,
+                      param_grid=lr_params,
+                      scoring='accuracy',
+                      n_jobs=-1,
+                      cv=2)
+    pipeline_pca_rf = Pipeline([('pca', PCA(n_components=1000)),
+                                ('clf', RandomForestClassifier(random_state=47))])
+    rf_params = [{'clf__max_features': ['sqrt'],
+                  'clf__n_estimators': [100, 400]}]
+    rf = GridSearchCV(estimator=pipeline_pca_rf,
+                     param_grid=rf_params,
+                      scoring='accuracy',
+                      n_jobs=-1,
+                      cv=2)
+    gscv_models = [lr, rf]
+    gscv_ind = ['Logistic Regression', 'Random Forest']
+    final_model = None
+    best_acc = 0
+    best_index = 0
+    for index, gscv_model in enumerate(gscv_models):
+        gscv_model.fit(x_tr, y_tr)
+        y_pred = gscv_model.predict(x_te)
+        acc = accuracy_score(y_te, y_pred)
+        if acc > best_acc:
+            final_model = gscv_model
+            best_acc = acc
+            best_index = index
+```
+
 
 
 
