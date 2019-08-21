@@ -46,5 +46,17 @@ tfidf = TfidfVectorizer(lowercase=True, analyzer='word', min_df=0.001,
 tfidf_tr = tfidf.fit_transform(x_train)
 tfidf_te = tfidf.transform(x_test)
 ```
+Dimensionality reduction methods are used to reduce number of features. As a result, it yields shorter processing time for model training and more importantly, better results of the trained models. Various methods are proposed to reduce dimension of features as a few of those methods are mentioned in the following. Principal Component Analysis (PCA) is used in this repository to reduce features’ dimension.
+-	Principal Component Analysis 
+-	Non-negative Matrix Factorization
+-	Linear Discriminant Analysis
+-	T-distributed Stochastic Neighbor Embedding
+-	Auto-encoder
+```python
+from sklearn.decomposition import PCA
+pca = PCA(n_features)
+x_train = pca.fit_transform(x_train.toarray())
+x_test = pca.transform(x_test.toarray())
+```
 
 
